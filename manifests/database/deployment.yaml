@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: database-container
-          image: 061186295720.dkr.ecr.us-east-1.amazonaws.com/docker-prod-containers-database:latest
+          image: 937274605158.dkr.ecr.us-east-1.amazonaws.com/docker-prod-containers-database:latest
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
