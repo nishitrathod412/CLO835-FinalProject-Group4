@@ -21,7 +21,7 @@ spec:
       serviceAccountName: clo835
       containers:
         - name: application-container
-          image: 061186295720.dkr.ecr.us-east-1.amazonaws.com/docker-prod-containers-application:latest
+          image: 937274605158.dkr.ecr.us-east-1.amazonaws.com/docker-prod-containers-application:latest
           imagePullPolicy: Always
           env:
             - name: DBPWD
