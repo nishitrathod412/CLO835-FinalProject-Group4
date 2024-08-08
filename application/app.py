@@ -15,7 +15,6 @@ COLOR_FROM_ENV = os.environ.get('APP_COLOR') or "lime"
 DBPORT = int(os.environ.get("DBPORT"))
 BACKGROUND_IMAGE = os.environ.get("BACKGROUND_IMAGE") or "Invalid Image been passed"
 GROUP_NAME = os.environ.get('GROUP_NAME') or "GROUP4"
-GROUP_MEMBERS = os.environ.get('GROUP_NAME') or "Om, Nishit, Meet, and Harjot"
 
 # Create a connection to the MySQL database
 db_conn = connections.Connection(
@@ -49,7 +48,7 @@ COLOR = random.choice(["red", "green", "blue", "blue2", "darkblue", "pink", "lim
 @app.route("/", methods=['GET', 'POST'])
 def home():
     print('show me the background image url',BACKGROUND_IMAGE)
-    image_url = url_for('static', filename='blue.jpg')
+    image_url = url_for('static', filename='background_image.png')
     return render_template('addemp.html', background_image = image_url, group_name = GROUP_NAME)
 @app.route("/download", methods=['GET','POST'])
   #https://privatebucketclo835.s3.amazonaws.com/minionparty.png
@@ -64,7 +63,7 @@ def download(image_url):
          output_dir = "static"
          if not os.path.exists(output_dir):
                  os.makedirs(output_dir)
-         output = os.path.join(output_dir, "blue.jpg")
+         output = os.path.join(output_dir, "background_image.png")
          s3.Bucket(bucket).download_file(object_name, output)
 
          return output
@@ -81,12 +80,12 @@ def download(image_url):
 
 @app.route("/about", methods=['GET','POST'])
 def about():
-    image_url = url_for('static', filename='blue.jpg')
-    return render_template('about.html', background_image = image_url, group_name = GROUP_NAME, group_members = GROUP_MEMBERS)
+    image_url = url_for('static', filename='background_image.png')
+    return render_template('about.html', background_image = image_url, group_name = GROUP_NAME)
     
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
-    image_url = url_for('static', filename='blue.jpg')
+    image_url = url_for('static', filename='background_image.png')
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
@@ -111,7 +110,7 @@ def AddEmp():
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
-    image_url = url_for('static', filename='blue.jpg')
+    image_url = url_for('static', filename='background_image.png')
     return render_template("getemp.html", background_image = image_url, group_name = GROUP_NAME)
 
 
