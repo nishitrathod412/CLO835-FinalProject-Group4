@@ -3,10 +3,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: database-pvc
   namespace: final
+  annotations:
+    volume.beta.kubernetes.io/storage-class: gp2
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 2Gi
-  storageClassName: gp2
+  storageClassName: aws-ebs-csi
