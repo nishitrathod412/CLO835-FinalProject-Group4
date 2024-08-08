@@ -15,6 +15,7 @@ COLOR_FROM_ENV = os.environ.get('APP_COLOR') or "lime"
 DBPORT = int(os.environ.get("DBPORT"))
 BACKGROUND_IMAGE = os.environ.get("BACKGROUND_IMAGE") or "Invalid Image been passed"
 GROUP_NAME = os.environ.get('GROUP_NAME') or "GROUP4"
+GROUP_MEMBERS = os.environ.get('GROUP_NAME') or "Om, Nishit, Meet, and Harjot"
 
 # Create a connection to the MySQL database
 db_conn = connections.Connection(
@@ -81,7 +82,7 @@ def download(image_url):
 @app.route("/about", methods=['GET','POST'])
 def about():
     image_url = url_for('static', filename='blue.jpg')
-    return render_template('about.html', background_image = image_url, group_name = GROUP_NAME)
+    return render_template('about.html', background_image = image_url, group_name = GROUP_NAME, group_members = GROUP_MEMBERS)
     
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
