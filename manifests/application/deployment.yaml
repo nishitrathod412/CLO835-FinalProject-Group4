@@ -38,13 +38,20 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: secrets
-                  key: DBUSER   
+                  key: DBUSER
             - name: DBPORT
               value: "3306"
-  
-          envFrom:
-            - configMapRef:
-                name: clo835    
+            - name: GROUP_NAME  # Add this if your application needs it
+              valueFrom:
+                configMapKeyRef:
+                  name: clo835
+                  key: GROUP_NAME
+            - name: BACKGROUND_IMAGE  # Add this if your application needs it
+              valueFrom:
+                configMapKeyRef:
+                  name: clo835
+                  key: BACKGROUND_IMAGE
+
           ports:
             - containerPort: 81
           resources:
@@ -52,5 +59,3 @@ spec:
               cpu: "0.5"
             requests:
               cpu: "0.5"
-            
-           
