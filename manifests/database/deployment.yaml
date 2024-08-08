@@ -5,36 +5,32 @@ metadata:
   namespace: final
   labels:
     app: mysql
-
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: mysql
-
   template:
     metadata:
       labels:
         app: mysql
-
     spec:
       containers:
-        - name: database-container
-          image: 937274605158.dkr.ecr.us-east-1.amazonaws.com/docker-prod-containers-database:latest
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: secrets
-                  key: MYSQL_ROOT_PASSWORD
-          ports:
-            - containerPort: 3306
-          volumeMounts:
-            - name: mysql-data
-              mountPath: /var/lib/mysql
-
-      volumes:
+      - name: database-container
+        image: 937274605158.dkr.ecr.us-east-1.amazonaws.com/docker-prod-containers-database:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        volumeMounts:
         - name: mysql-data
-          persistentVolumeClaim:
-            claimName: database-pvc  
-
-
+          mountPath: /var/lib/mysql
+        envFrom:
+          - secretRef:
+              name: secrets
+        ports:
+        - containerPort: 3306
+      volumes:
+      - name: mysql-data
+        persistentVolumeClaim:
+          claimName: database-pvc
