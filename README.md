@@ -2,7 +2,7 @@
 
 ## Group Members:
 - Nishit Rathod - Seneca ID: 133411223
--
+- Omkumar Sanjay Goswami - Seneca ID: 140472234
 -
 -
 
