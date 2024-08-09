@@ -3,8 +3,8 @@
 ## Group Members:
 - Nishit Rathod - Seneca ID: 133411223
 - Omkumar Sanjay Goswami - Seneca ID: 140472234
-- Meet Brahmbhatt -Seneca ID 136557220
--
+- Meet Brahmbhatt - Seneca ID: 136557220
+- Harjot Singh - Seneca ID: 127800233
 
 This repository contains the deployment instructions for a two-tier web application on Amazon EKS. The application uses Docker containers hosted on Amazon ECR and includes an application server and a MySQL database. Follow the steps below to set up and deploy the application.
 
